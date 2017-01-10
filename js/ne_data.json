@@ -1,30 +1,18 @@
-var currentMarker = null;
-
-function changeMarkerColor(e) {
-    if(currentMarker) {
-        currentMarker.classList.remove('selected-icon');
-    }
-    e.target._icon.classList.add('selected-icon');
-    currentMarker = e.target._icon;
+{
+    site_id: "MX-0001",
+    site_type: "eNodeB",
+    site_vendor: "Nokia",
+    site_coords: [52.49038, 13.4133],
+    site_parent: "ME-0001",
+    site_parameter_set: "Rural",
+    site_power: -91,
+    site_tilt: 28,
+    site_param1: 0,
+    site_param2: 1,
+    site_param3: 2
 }
 
-function setupMap() {
-
-    var mymap = L.map('mapid').setView([52.5, 13.5], 10);
-
-    var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    maxZoom: 18
-    }).addTo(mymap);
-
-    var defaultIcon = L.divIcon();
-
-    var msc_coords = [52.55491526,13.33640716];
-    var msc = L.marker(msc_coords, {icon: defaultIcon}).addTo(mymap);
-    msc.on('click', changeMarkerColor);
-
-    var ne_coords = [
-        [52.49038, 13.4133],
+[52.49038, 13.4133],
         [52.49270513,13.63053434],
         [52.40414752,13.55032985],
         [52.37717358,13.72186141],
@@ -76,13 +64,3 @@ function setupMap() {
         [52.55680439,13.59013863],
         [52.76497020,13.329591]
     ];
-
-    ne_coords.forEach(function (c, i, a) {
-        var m = L.marker(c, {icon: defaultIcon}).addTo(mymap);
-        m.on('click', changeMarkerColor);
-        L.polyline([msc_coords, c], {color: 'grey'}).addTo(mymap);
-    });
-
-}
-
-setupMap();

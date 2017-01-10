@@ -1,1 +1,19 @@
-#mapid { height: 700px; }
+div.bordered_row div[class^="col-md-"] {
+    border: 1px solid;
+}
+
+.bordered_row + .bordered_row {
+    border-top: 0;
+}
+
+#mapid {
+    height: 700px;
+}
+
+.leaflet-div-icon {
+    background: #0099FF;
+}
+
+.selected-icon {
+    background: #C13041;
+}
